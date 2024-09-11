@@ -1,0 +1,23 @@
+-- Criação da tabela 'vendedor'
+CREATE TABLE vendedor (
+    nro_vend INT PRIMARY KEY,        -- Definindo nro_vend como a chave primária
+    nome_vend VARCHAR(255) NOT NULL, -- Nome do vendedor
+    sexo_vend CHAR(1) NOT NULL       -- Sexo do vendedor (M/F)
+);
+
+-- Criação da tabela 'cliente'
+CREATE TABLE cliente (
+    nro_cli INT PRIMARY KEY,         -- Definindo nro_cli como a chave primária
+    nome_cli VARCHAR(255) NOT NULL,  -- Nome do cliente
+    end_cli VARCHAR(255) NOT NULL    -- Endereço do cliente
+);
+
+-- Criação da tabela 'atendimento'
+CREATE TABLE atendimento (
+    nro_vend INT,                    -- Número do vendedor
+    nro_cli INT,                     -- Número do cliente
+    data_atend DATE NOT NULL,        -- Data de atendimento
+    PRIMARY KEY (nro_vend, nro_cli), -- Chave primária composta
+    FOREIGN KEY (nro_vend) REFERENCES vendedor(nro_vend), -- Chave estrangeira referenciando vendedor
+    FOREIGN KEY (nro_cli) REFERENCES cliente(nro_cli)      -- Chave estrangeira referenciando cliente
+);
